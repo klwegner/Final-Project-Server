@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose");
+const Destination = require("./Destination.model");
 
 // TODO: Please make sure you edit the user model to whatever makes sense in this case
 const citySchema = new Schema(
@@ -12,7 +13,8 @@ const citySchema = new Schema(
       unique:true
     },
     description: String,
-  },
+    Destination: [{type: Schema.Types.ObjectId, ref: 'Destination'}]
+},
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
     timestamps: true,
