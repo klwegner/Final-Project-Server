@@ -1,8 +1,10 @@
-// const router = require('express').Router();
+const router = require("express").Router();
+const { restart } = require("nodemon");
+const City = require("../models/City.model");
+const Destination = require("../models/Destination.model");
+const User = require('../models/User.model');
 
-// const Destination = require('../models/Destination.model');
-// const City = require('../models/City.model');
-// const { modelName } = require('../models/User.model');
+//add way to edit destination
 
 // router.post('/addDestination', (req, res, next) =>{
 // const { name, description, city, address, destinationType, cityId } = req.body;

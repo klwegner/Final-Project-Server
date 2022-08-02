@@ -1,7 +1,6 @@
 const { Schema, model } = require("mongoose");
 const Destination = require("./Destination.model");
 
-// TODO: Please make sure you edit the user model to whatever makes sense in this case
 const citySchema = new Schema(
   {
     name: {
@@ -13,6 +12,8 @@ const citySchema = new Schema(
       unique:true
     },
     description: String,
+    visited: {
+      type: Boolean },
     Destination: [{type: Schema.Types.ObjectId, ref: 'Destination'}]
 },
   {
