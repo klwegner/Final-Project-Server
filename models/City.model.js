@@ -3,13 +3,17 @@ const Destination = require("./Destination.model");
 
 const citySchema = new Schema(
   {
+    userId: {type: Schema.Types.ObjectId, ref: 'User'},
     name: {
       type: String,
       unique: true
     },
-    location:{
+    usState:{
       type: String,
-      unique:true
+    },
+    country: {
+      type: String,
+      require: true
     },
     description: String,
     visited: {

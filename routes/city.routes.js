@@ -4,9 +4,6 @@ const City = require("../models/City.model");
 const Destination = require("../models/Destination.model");
 const User = require('../models/User.model');
 
-
-//do I need to add authentication in backend?
-
 router.post("/addCity", (req, res, next) => {
 
   //add object to location: city, state (optional), country
@@ -71,26 +68,11 @@ router.put('/cities/:cityId', (req, res, next) =>{
 
 
 router.delete('/cities/:cityId', (req, res, next) =>{
-  const theCityId = req.params;
-  //added below section to try to match with line 88, unclear if it works
-
-  // City.findById(theCityId)
-  // .then((foundCity)=>res.status(200).json(foundCity))
-  // .catch((err) => {
-  //     console.log(err)
-  //     res.json(err)})
-  //  if (`${req.session.currentUser._id}` == `${foundCity.userId}`) {
+  const theCityId = req.params.cityId;
 City.findByIdAndRemove(theCityId)
 .then(() => res.json({ message: `City with ${cityId} is removed successfully.` }))
 .catch(err => res.json(err))
-  // }
-  // else {
-  //   res.json({ message: 'This is not a city you added!'})
-  // }
+
 })
-
-
-
-//add something to edit city
 
 module.exports = router;

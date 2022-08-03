@@ -19,8 +19,11 @@ app.use("/api", allRoutes);
 const  authRouter = require('./routes/auth.routes');
 app.use("/auth", authRouter);
 
+const destinationRoutes = require('./routes/destination.routes');
+app.use("/api", isAuthenticated, destinationRoutes);
+
 const cityRouter = require('./routes/city.routes')
-app.use('/api', isAuthenticated, cityRouter)
+app.use('/api', isAuthenticated, cityRouter);
 
 // const destinationRouter = require('./routes/destination.routes')
 // app.use('/api', isAuthenticated, destinationRouter)

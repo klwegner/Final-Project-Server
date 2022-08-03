@@ -6,13 +6,15 @@ const destinationSchema = new Schema(
     userId: {type: Schema.Types.ObjectId, ref: 'User'},
     name: {
       type: String,
-      unique: true
+      unique: true,
+      require: true
     },
     description: String,
-    city: {type: Schema.Types.ObjectId, ref: 'City'},
+    cityId: {type: Schema.Types.ObjectId, ref: 'City'},  
     address: String,
-    destinationType: ['naturalWorld','history', 'nightlife', 'architecture', 'fun', 'other']
-
+    destinationType:['naturalWorld','history', 'nightlife', 'architecture', 'fun', 'other'],
+    completed:{
+      type: Boolean },
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
