@@ -16,8 +16,8 @@ const citySchema = new Schema(
       require: true
     },
     description: String,
-    visited: {
-      type: Boolean },
+    // visited: {
+    //   type: Boolean },
     Destination: [{type: Schema.Types.ObjectId, ref: 'Destination'}]
 },
   {

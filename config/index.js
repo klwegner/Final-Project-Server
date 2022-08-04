@@ -23,6 +23,7 @@ module.exports = (app) => {
   app.use(
     cors({
       credentials: true,
+      //this will be the frontend url
       origin: process.env.ORIGIN || "http://localhost:3000",
     })
   );
