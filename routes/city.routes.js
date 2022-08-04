@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const { restart } = require("nodemon");
 const City = require("../models/City.model");
 const Destination = require("../models/Destination.model");
 const User = require('../models/User.model');
