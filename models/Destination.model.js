@@ -12,8 +12,8 @@ const destinationSchema = new Schema(
     description: String,
     cityId: {type: Schema.Types.ObjectId, ref: 'City'},  
     address: String,
-    destinationType:['naturalWorld','history', 'nightlife', 'architecture', 'fun', 'other'],
-    completed:{
+    destinationType:['naturalWorld','history', 'nightlife', 'architecture', 'fun', 'misc'],
+    done:{
       type: Boolean },
   },
   {

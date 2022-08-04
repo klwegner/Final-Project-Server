@@ -14,7 +14,7 @@ router.post("/addCity", (req, res, next) => {
     return;
   }
 
-  City.findOne({ location })
+  City.findOne({ name })
     .then((foundCity) => {
       if (foundCity) {
         res.status(400).json({ message: "City already exists." });
