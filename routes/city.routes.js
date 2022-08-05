@@ -4,12 +4,9 @@ const Destination = require("../models/Destination.model");
 const User = require('../models/User.model');
 
 router.post("/addCity", (req, res, next) => {
+  const { name, description, usState, country, destinations, visited } = req.body;
 
-  //add object to location: city, state (optional), country
-
-  const { name, description, location, destinations, visited } = req.body;
-
-  if (name === "" || description === "" || location === "") {
+  if (name === "" || description === "" || country === "") {
     res.status(400).json({ message: "Please fill in required fields." });
     return;
   }
@@ -20,18 +17,13 @@ router.post("/addCity", (req, res, next) => {
         res.status(400).json({ message: "City already exists." });
         return;
       }
-  
 
-  //add object to location: city, state (optional), country
-
-  return City.create({ name, description, location, destinations: [], visited: false })
+  return City.create({ name, description, usState, country, destinations: [], visited: false })
 })
 .then((createdCity)=>{
 
-  //add object to location: city, state (optional), country
-
-const { name, description, location, destinations, _id } = createdCity;
-const city = { name, description, location, destinations, _id };
+const { name, description, usState, country, destinations, _id } = createdCity;
+const city = { name, description, usState, country, destinations, _id };
 res.status(201).json({city: city});
 })
 .catch((err) => {

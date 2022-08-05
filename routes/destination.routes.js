@@ -33,7 +33,7 @@ router.get("/cities/:cityId/destinations", (req, res, next) => {
     })
 
     router.put('/destinations/:destinationId', (req, res, next) => {
-        Destination.findByIdAndUpdate(req.params.destinationId)
+        Destination.findByIdAndUpdate(req.params.destinationId, req.body, {new: true})
         .then((oneDestination) => res.status(200).json(oneDestination))
         .catch((err) => {
             console.log(err)

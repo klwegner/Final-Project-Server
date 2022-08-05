@@ -6,7 +6,6 @@ const citySchema = new Schema(
     userId: {type: Schema.Types.ObjectId, ref: 'User'},
     name: {
       type: String,
-      unique: true
     },
     usState:{
       type: String,
@@ -16,12 +15,11 @@ const citySchema = new Schema(
       require: true
     },
     description: String,
-    // visited: {
-    //   type: Boolean },
+    visited: {
+      type: Boolean },
     Destination: [{type: Schema.Types.ObjectId, ref: 'Destination'}]
 },
   {
-    // this second object adds extra properties: `createdAt` and `updatedAt`
     timestamps: true,
   }
 );
