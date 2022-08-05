@@ -17,14 +17,18 @@ router.post("/addCity", (req, res, next) => {
         res.status(400).json({ message: "City already exists." });
         return;
       }
+    })
 
   return City.create({ name, description, usState, country, destinations: [], visited: false })
-})
 .then((createdCity)=>{
-
-const { name, description, usState, country, destinations, _id } = createdCity;
-const city = { name, description, usState, country, destinations, _id };
-res.status(201).json({city: city});
+if (createdCity){
+  const { name, description, usState, country, destinations, _id } = createdCity;
+  const city = { name, description, usState, country, destinations, _id };
+  res.status(201).json({city: city});
+}
+else {
+  res.status(500).json({ message: "internal server error" });
+}
 })
 .catch((err) => {
     console.log(err);
