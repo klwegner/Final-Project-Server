@@ -72,7 +72,9 @@ User.findOne({ username })
                 process.env.TOKEN_SECRET,
                 {algorithm: 'HS256', expiresIn: '24h'}
             );
-            res.status(200).json({ authToken: authToken});
+
+            //changed below to add ", userId:_id" bit
+            res.status(200).json({ authToken: authToken, userId:_id});
         
         }
         else {

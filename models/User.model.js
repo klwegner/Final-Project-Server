@@ -2,10 +2,14 @@ const { Schema, model } = require("mongoose");
 
 const userSchema = new Schema(
   {
+
+
+    userCities: [{ type: Schema.Types.ObjectId, ref: 'UserCity' }],
+
     //how to make below populate only cities with visited === true
-    visitedCities: [{type: Schema.Types.ObjectId, ref: 'City'}], 
+    // visitedCities: [{type: Schema.Types.ObjectId, ref: 'City'}], 
     //how to make below populate only cities with visited === false
-    unvisitedCities:[{type: Schema.Types.ObjectId, ref: 'City'}],
+    // unvisitedCities:[{type: Schema.Types.ObjectId, ref: 'City'}],
     username: {
       type: String,
       unique: true,

@@ -24,6 +24,12 @@ app.use("/api", isAuthenticated, destinationRoutes);
 const cityRouter = require('./routes/city.routes')
 app.use('/api', isAuthenticated, cityRouter);
 
+const userCityRouter = require('./routes/userCity.routes')
+app.use("/api", isAuthenticated, userCityRouter);
+
+const userDestinationRouter = require('./routes/userDestination.routes')
+app.use("/api", isAuthenticated, userDestinationRouter)
+
 require("./error-handling")(app);
 
 module.exports = app;
