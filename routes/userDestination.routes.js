@@ -3,7 +3,9 @@ const User = require("../models/User.model");
 const Destination = require("../models/Destination.model");
 const UserDestination = require("../models/UserDestination.model");
 
-router.get("/user-destination/:userId/:destinationId", (req, res, next) => {
+//get one userDestination
+
+router.get("/user-destinations/:userId/:destinationId", (req, res, next) => {
   const { destinationId, userId } = req.params;
 
   UserDestination.findOne({ destinationId, userId })
@@ -16,11 +18,29 @@ router.get("/user-destination/:userId/:destinationId", (req, res, next) => {
     });
 });
 
-router.put("/user-destination/:userId/:destinationId", (req, res, next) => {
-  const { completed } = req.body;
-  const { userId, destinationId } = req.params;
+//get all userDestionations
 
-  UserDestination.findOneAndUpdate({ userId, destinationId }, { completed }, { new: true })
+router.get("/user-destinations/:userId", (req, res, next) => {
+    const { userId, cityId } = req.params;
+  
+    UserDestination.find({ userId, cityId })
+      .then(userDestinations => {
+          res.json(userDestinations);
+      })
+      .catch(err => {
+        console.error(err);
+        res.status(500).json({ message: 'An error occurred while finding user destinations' });
+      });
+  });
+  
+
+//update completed property
+
+router.put("/user-destinations/:userId/:cityId/:destinationId", (req, res, next) => {
+  const { completed } = req.body;
+  const { userId, cityId, destinationId } = req.params;
+
+  UserDestination.findOneAndUpdate({ userId, cityId, destinationId }, { completed }, { new: true })
     .then(updatedUserDestination => {
       if (updatedUserDestination) {
         res.status(200).json(updatedUserDestination);
@@ -34,7 +54,9 @@ router.put("/user-destination/:userId/:destinationId", (req, res, next) => {
     });
 });
 
-router.post("/user-destination", (req, res, next) => {
+//create new
+
+router.post("/user-destinations", (req, res, next) => {
     const { userId, destinationId, completed } = req.body;
   
     UserDestination.create({ userId, destinationId, completed})

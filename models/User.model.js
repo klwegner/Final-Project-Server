@@ -5,6 +5,7 @@ const userSchema = new Schema(
 
 
     userCities: [{ type: Schema.Types.ObjectId, ref: 'UserCity' }],
+    userDestinations:[{ type: Schema.Types.ObjectId, ref: 'UserDestination'}],
 
     //how to make below populate only cities with visited === true
     // visitedCities: [{type: Schema.Types.ObjectId, ref: 'City'}], 
